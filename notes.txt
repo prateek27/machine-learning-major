@@ -1,0 +1,12 @@
+Dependencies :
+
+1) Numpy
+pip3 install numpy 
+
+2) Mathplot lib :
+
+sudo apt-get install python3-matplotlib
+sudo apt-get install python3-scipy
+
+3) Scikit Learn
+pip3 install -U scikit-learn
