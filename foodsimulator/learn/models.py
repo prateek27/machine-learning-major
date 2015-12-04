@@ -25,4 +25,4 @@ class order(models.Model):
 	feedback= models.CharField(max_length=200)
 
 	def __str__(self):
-		return str( self.date+ " " +self.school.school_name) 
+		return str(self.school.school_name + str(self.units_delivered) + "/" + str(self.units_left)) 

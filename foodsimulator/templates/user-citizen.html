@@ -1,0 +1,748 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html lang="en">
+
+
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="msapplication-tap-highlight" content="no">
+  <meta name="description" content="Materialize is a Material Design Admin Template,It's modern, responsive and based on Material Design by Google. ">
+  <meta name="keywords" content="materialize, admin template, dashboard template, flat admin template, responsive admin template,">
+  <title>{{user.get_full_name }} Profile Page</title>
+
+  <!-- Favicons-->
+  <link rel="icon" href="images/favicon/favicon-32x32.png" sizes="32x32">
+  <!-- Favicons-->
+  <link rel="apple-touch-icon-precomposed" href="images/favicon/apple-touch-icon-152x152.png">
+  <!-- For iPhone -->
+  <meta name="msapplication-TileColor" content="#00bcd4">
+  <meta name="msapplication-TileImage" content="images/favicon/mstile-144x144.png">
+  <!-- For Windows Phone -->
+
+
+  <!-- CORE CSS-->
+  
+  <link href="{% static 'css/materialize.css' %}" type="text/css" rel="stylesheet" media="screen,projection">
+  <link href="{% static 'css/style.css' %}" type="text/css" rel="stylesheet" media="screen,projection">
+    <!-- Custome CSS-->    
+    <link href="{% static 'css/custom-style.css' %}" type="text/css" rel="stylesheet" media="screen,projection">
+
+
+  <!-- INCLUDED PLUGIN CSS ON THIS PAGE -->
+  <link href="{% static 'css/prism.css' %}" type="text/css" rel="stylesheet" media="screen,projection">
+  <link href="{% static 'js/plugins/perfect-scrollbar/perfect-scrollbar.css'%}" type="text/css" rel="stylesheet" media="screen,projection">
+  <link href="{% static 'js/plugins/chartist-js/chartist.min.css'%}" type="text/css" rel="stylesheet" media="screen,projection">
+</head>
+
+<body>
+  <!-- Start Page Loading -->
+  <div id="loader-wrapper">
+      <div id="loader"></div>        
+      <div class="loader-section section-left"></div>
+      <div class="loader-section section-right"></div>
+  </div>
+  <!-- End Page Loading -->
+
+  <!-- //////////////////////////////////////////////////////////////////////////// -->
+
+  <!-- START HEADER -->
+  <header id="header" class="page-topbar">
+        <!-- start header nav-->
+        <div class="navbar-fixed">
+            <nav class="cyan">
+                <div class="nav-wrapper">                    
+                    
+                    <ul class="left">                      
+                      <li><h1 class="logo-wrapper"><a href="index.html" class="brand-logo darken-1"></a> <span class="logo-text">Materialize</span></h1></li>
+                    </ul>
+                    <div class="header-search-wrapper hide-on-med-and-down">
+                        <i class="mdi-action-search"></i>
+                        <input type="text" name="Search" class="header-search-input z-depth-2" placeholder="Explore Smart City Portal"/>
+                    </div>
+                    <ul class="right hide-on-med-and-down">                        
+                        <li><a href="javascript:void(0);" class="waves-effect waves-block waves-light toggle-fullscreen"><i class="mdi-action-settings-overscan"></i></a>
+                        </li>
+                        <li><a href="javascript:void(0);" class="waves-effect waves-block waves-light"><i class="mdi-navigation-apps"></i></a>
+                        </li>                        
+                        <li><a href="javascript:void(0);" class="waves-effect waves-block waves-light"><i class="mdi-social-notifications"></i></a>
+                        </li>                        
+                        <li><a href="#" data-activates="chat-out" class="waves-effect waves-block waves-light chat-collapse"><i class="mdi-communication-chat"></i></a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+        <!-- end header nav-->
+  </header>
+  <!-- END HEADER -->
+
+  <!-- //////////////////////////////////////////////////////////////////////////// -->
+
+  <!-- START MAIN -->
+  <div id="main">
+    <!-- START WRAPPER -->
+    <div class="wrapper">
+
+    
+      <!-- //////////////////////////////////////////////////////////////////////////// -->
+
+      <!-- START CONTENT -->
+      <section id="content">        
+
+        <!--start container-->
+        <div class="container">
+
+          <div id="profile-page" class="section">
+            <!-- profile-page-header -->
+            <div id="profile-page-header" class="card">
+                <div class="card-image waves-effect waves-block waves-light">
+                    <img class="activator" src="{% static 'images/user-profile-bg.jpg' %}" alt="user background">                    
+                </div>
+                <figure class="card-profile-image">
+                    <img src="{{userimage}}" alt="profile image" class="circle z-depth-2 responsive-img activator">
+                </figure>
+                <div class="card-content">
+                  <div class="row">                    
+                    <div class="col s3 offset-s2">                        
+                        <h4 class="card-title grey-text text-darken-4">{{user.get_full_name}}</h4>
+                        <p class="medium-small grey-text">Citizen, Chandigarh</p>                        
+                    </div>
+                    <div class="col s2 center-align">
+                        <h4 class="card-title grey-text text-darken-4">20</h4>
+                        <p class="medium-small grey-text">Total Events Conducted</p>                        
+                    </div>
+                    <div class="col s2 center-align">
+                        <h4 class="card-title grey-text text-darken-4">8</h4>
+                        <p class="medium-small grey-text">Asked Queries</p>                                          
+                    </div>                    
+                    <div class="col s1 right-align">
+                      <a class="btn-floating activator waves-effect waves-light darken-2 right">
+                          <i class="mdi-action-perm-identity"></i>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+                <div class="card-reveal">
+                    <p>
+                      <span class="card-title grey-text text-darken-4">{{user.get_full_name}} <i class="mdi-navigation-close right"></i></span>
+                      <span><i class="mdi-action-perm-identity cyan-text text-darken-2"></i> -</span>
+                    </p>
+
+                </div>
+            </div>
+            <!--/ profile-page-header -->
+
+            <!-- profile-page-content -->
+            <div id="profile-page-content" class="row">
+              <!-- profile-page-sidebar-->
+              <div id="profile-page-sidebar" class="col s12 m4">
+                <!-- Profile About  -->
+                <div class="card light-blue">
+                  <div class="card-content white-text">
+                    <span class="card-title">Upcoming Activities Nearby !</span>
+                    <p>Cleaning Drive - 1st Nov</p>
+                    <p>Plantation Drive - 2nd Nov</p>
+                    <p>Cycling Day - 5th Nov</p>
+                  </div>                  
+                </div>
+                <!-- Profile About  -->
+
+                <!-- Profile About Details  -->
+                <ul id="profile-page-about-details" class="collection z-depth-1">
+                  <li class="collection-item">
+                    <div class="row">
+                      <div class="col s5 grey-text darken-1"><i class="mdi-action-wallet-travel"></i>Constituency</div>
+                      <div class="col s7 grey-text text-darken-4 right-align">Chandigarh</div>
+                    </div>
+                  </li>
+                  <li class="collection-item">
+                    <div class="row">
+                      <div class="col s5 grey-text darken-1"><i class="mdi-social-poll"></i> Education</div>
+                      <div class="col s7 grey-text text-darken-4 right-align">MS Politics</div>
+                    </div>
+                  </li>
+                  <li class="collection-item">
+                    <div class="row">
+                      <div class="col s5 grey-text darken-1"><i class="mdi-social-domain"></i> Lives in</div>
+                      <div class="col s7 grey-text text-darken-4 right-align">Sec-17,Chandigarh</div>
+                    </div>
+                  </li>
+                  <li class="collection-item">
+                    <div class="row">
+                      <div class="col s5 grey-text darken-1"><i class="mdi-social-cake"></i> Birth date</div>
+                      <div class="col s7 grey-text text-darken-4 right-align">18th June, 1991</div>
+                    </div>
+                  </li>
+                </ul>
+                <!--/ Profile About Details  -->
+
+                <!-- Profile About  -->
+                <div class="card amber darken-2">
+                  <div class="card-content white-text center-align">
+                    <p class="card-title"><i class="mdi-social-group-add"></i> 3685/5000</p>
+                    <p>Upvotes</p>
+                  </div>                  
+                </div>
+                <!-- Profile About  -->
+
+
+
+                <!-- Profile Total sell -->
+                <div class="card center-align">
+                  <div class="card-content purple white-text">
+                      <p class="card-stats-title"><i class="mdi-editor-attach-money"></i>Your Rating</p>
+                      <h4 class="card-stats-number"> + 3600 Upvotes</h4>
+                      <p class="card-stats-compare"><i class="mdi-hardware-keyboard-arrow-up"></i> 20% <span class="purple-text text-lighten-5">last month</span>
+                      </p>
+                  </div>
+                  <div class="card-action purple darken-2">
+                      <div id="sales-compositebar"></div>
+                  </div>
+                </div>
+
+                
+
+              
+
+              <!-- profile-page-sidebar-->
+
+              <!-- profile-page-wall -->
+              <div id="profile-page-wall" class="col s12 m8">
+                <!-- profile-page-wall-share -->
+                <div id="profile-page-wall-share" class="row">
+                  <div class="col s12">
+                    <ul class="tabs tab-profile z-depth-1 light-blue">
+                      <li class="tab col s3"><a class="white-text waves-effect waves-light active" href="#UpdateStatus"><i class="mdi-editor-border-color"></i>Write Message</a>
+                      </li>
+                      <li class="tab col s3"><a class="white-text waves-effect waves-light" href="#AddPhotos"><i class="mdi-image-camera-alt"></i>Share Photos</a>
+                      </li>
+                      <li class="tab col s3"><a class="white-text waves-effect waves-light" href="#CreateAlbum"><i class="mdi-image-photo-album"></i> Create Album</a>
+                      </li>                      
+                    </ul>
+                    <!-- UpdateStatus-->
+                    <div id="UpdateStatus" class="tab-content col s12  grey lighten-4">
+                      <div class="row">
+                        <div class="col s2">
+                          <img src="{{userimage}}" alt="" class="circle responsive-img valign profile-image-post">
+                        </div>
+                        <div class="input-field col s10">
+                          <textarea id="textarea1" row="2" class="materialize-textarea"></textarea>
+                          <label for="textarea" class="">Broadcast Your Message</label>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col s12 m6 share-icons">
+                          <a href="#"><i class="mdi-image-camera-alt"></i></a>
+                          <a href="#"><i class="mdi-action-account-circle"></i></a>
+                          <a href="#"><i class="mdi-hardware-keyboard-alt"></i></a>
+                          <a href="#"><i class="mdi-communication-location-on"></i></a>
+                        </div>
+                        <div class="col s12 m6 right-align">
+                           <!-- Dropdown Trigger -->
+                            <a class='dropdown-button btn' href='#' data-activates='profliePost'><i class="mdi-action-language"></i> Public</a>
+
+                            <!-- Dropdown Structure -->
+                            <ul id='profliePost' class='dropdown-content'>
+                              <li><a href="#!"><i class="mdi-action-language"></i> Public</a></li>
+                              <li><a href="#!"><i class="mdi-action-face-unlock"></i>Leaders</a></li>                              
+                              <li><a href="#!"><i class="mdi-action-lock-outline"></i>Bureaucrats</a></li>
+                            </ul>
+                            
+                            <a id="mysubmitbtn" class="waves-effect waves-light btn"><i class="mdi-maps-rate-review left"></i>Send All</a>
+                            
+                        </div>
+                      </div>
+                    </div>
+                    <!-- AddPhotos -->
+                    <div id="AddPhotos" class="tab-content col s12  grey lighten-4">
+                      <div class="row">
+                        <div class="col s2">
+                          <img src="{{userimage}}" alt="" class="circle responsive-img valign profile-image-post">
+                        </div>
+                        <div class="input-field col s10">
+                          <textarea id="textarea" row="2" class="materialize-textarea"></textarea>
+                          <label for="textarea" class="">Share your favorites photos!</label>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col s12 m6 share-icons">
+                          <a href="#"><i class="mdi-image-camera-alt"></i></a>
+                          <a href="#"><i class="mdi-action-account-circle"></i></a>
+                          <a href="#"><i class="mdi-hardware-keyboard-alt"></i></a>
+                          <a href="#"><i class="mdi-communication-location-on"></i></a>
+                        </div>
+                        <div class="col s12 m6 right-align">
+                           <!-- Dropdown Trigger -->
+                            <a class='dropdown-button btn' href='#' data-activates='profliePost2'><i class="mdi-action-language"></i> Public</a>
+
+                            <!-- Dropdown Structure -->
+                            <ul id='profliePost2' class='dropdown-content'>
+                              <li><a href="#!"><i class="mdi-action-language"></i> Public</a></li>
+                              <li><a href="#!"><i class="mdi-action-face-unlock"></i> Friends</a></li>                              
+                              <li><a href="#!"><i class="mdi-action-lock-outline"></i> Only Me</a></li>
+                            </ul>
+
+                            <a class="waves-effect waves-light btn"><i class="mdi-maps-rate-review left"></i>Post</a>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- CreateAlbum -->
+                    <div id="CreateAlbum" class="tab-content col s12  grey lighten-4">
+                      <div class="row">
+                        <div class="col s2">
+                          <img src="{{userimage}}" alt="" class="circle responsive-img valign profile-image-post">
+                        </div>
+                        <div class="input-field col s10">
+                          <textarea id="textarea" row="2" class="materialize-textarea"></textarea>
+                          <label for="textarea" class="">Create awesome album.</label>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col s12 m6 share-icons">
+                          <a href="#"><i class="mdi-image-camera-alt"></i></a>
+                          <a href="#"><i class="mdi-action-account-circle"></i></a>
+                          <a href="#"><i class="mdi-hardware-keyboard-alt"></i></a>
+                          <a href="#"><i class="mdi-communication-location-on"></i></a>
+                        </div>
+                        <div class="col s12 m6 right-align">
+                           <!-- Dropdown Trigger -->
+                            <a class='dropdown-button btn' href='#' data-activates='profliePost3'><i class="mdi-action-language"></i> Public</a>
+
+                            <!-- Dropdown Structure -->
+                            <ul id='profliePost3' class='dropdown-content'>
+                              <li><a href="#!"><i class="mdi-action-language"></i> Public</a></li>
+                              <li><a href="#!"><i class="mdi-action-face-unlock"></i> Friends</a></li>                              
+                              <li><a href="#!"><i class="mdi-action-lock-outline"></i> Only Me</a></li>
+                            </ul>
+
+                            <a class="waves-effect waves-light btn"><i class="mdi-maps-rate-review left"></i>Post</a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!--/ profile-page-wall-share -->
+
+                <!-- profile-page-wall-posts -->
+                <div id="profile-page-wall-posts"class="row">
+                  <div class="col s12">
+                      <!-- medium -->
+                      <div id="profile-page-wall-post" class="card">
+                        <div class="card-profile-title">
+                          <div class="row">
+                            <div class="col s1">
+                              <img src="{{userimage}}" alt="" class="circle responsive-img valign profile-post-uer-image">                        
+                            </div>
+                            <div class="col s10">
+                              <p class="grey-text text-darken-4 margin">{{user.first_name}}</p>
+                              <span class="grey-text text-darken-1 ultra-small">Shared publicly  -  30th Oct 2015</span>
+                            </div>
+                            <div class="col s1 right-align">
+                              <i class="mdi-navigation-expand-more"></i>
+                            </div>
+                          </div>
+                          <div class="row">
+                            <div class="col s12">
+                              <p>Lets make our country a skilled and digital one !<a href="#">#DigitalIndia</a></p>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="card-content">
+                          <p>I am a very simple card. I am good at containing small bits of information. I am convenient because I require little markup to use effectively.</p>
+                        </div>
+                        <div class="card-action row">
+                          <div class="col s4 card-action-share">
+                            <a href="#">Like</a>                          
+                            <a href="#">Share</a>
+                          </div>
+                          
+                          <div class="input-field col s8 margin">
+                            <input id="profile-comments" type="text" class="validate margin">
+                            <label for="profile-comments" class="">Comments</label>
+                          </div>                        
+                        </div>                        
+                      </div>
+
+                      <!-- medium video -->
+                      <div id="profile-page-wall-post" class="card">
+                        <div class="card-profile-title">
+                          <div class="row">
+                            <div class="col s1">
+                              <img src="{{userimage}}" alt="" class="circle responsive-img valign profile-post-uer-image">                        
+                            </div>
+                            <div class="col s10">
+                              <p class="grey-text text-darken-4 margin">{{user.get_full_name}}</p>
+                              <span class="grey-text text-darken-1 ultra-small">Shared publicly  -  26 Jun 2015</span>
+                            </div>
+                            <div class="col s1 right-align">
+                              <i class="mdi-navigation-expand-more"></i>
+                            </div>
+                          </div>
+                          <div class="row">
+                            <div class="col s12">
+                              <p>I am a very simple wall post. I am good at containing <a href="#">#small</a> bits of <a href="#">#information</a>.  I require little more information to use effectively.</p>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="card-content">
+                          <p>I am a very simple card. I am good at containing small bits of information. I am convenient because I require little markup to use effectively.</p>
+                        </div>
+                        <div class="card-action row">
+                          <div class="col s4 card-action-share">
+                            <a href="#">Like</a>                          
+                            <a href="#">Share</a>
+                          </div>
+                          
+                          <div class="input-field col s8 margin">
+                            <input id="profile-comments" type="text" class="validate margin">
+                            <label for="profile-comments" class="">Comments</label>
+                          </div>                        
+                        </div>                        
+                      </div>                      
+
+                      <!-- small -->
+                      <div id="profile-page-wall-post" class="card">
+                        <div class="card-profile-title">
+                          <div class="row">
+                            <div class="col s1">
+                              <img src="{{userimage}}" alt="" class="circle responsive-img valign profile-post-uer-image">                        
+                            </div>
+                            <div class="col s10">
+                              <p class="grey-text text-darken-4 margin">{{user.get_full_name}}</p>
+                              <span class="grey-text text-darken-1 ultra-small">Shared publicly  -  26 Jun 2015</span>
+                            </div>
+                            <div class="col s1 right-align">
+                              <i class="mdi-navigation-expand-more"></i>
+                            </div>
+                          </div>
+                          <div class="row">
+                            <div class="col s12">
+                              <p>I am a very simple wall post. I am good at containing <a href="#">#small</a> bits of <a href="#">#information</a>.  I require little more information to use effectively.</p>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="card-image profile-small">
+                                                  
+                          <span class="card-title">Card Title</span>
+                        </div>
+                        <div class="card-content">
+                          <p>I am a very simple card. I am good at containing small bits of information. I am convenient because I require little markup to use effectively.</p>
+                        </div>
+                        <div class="card-action row">
+                          <div class="col s4 card-action-share">
+                            <a href="#">Like</a>                          
+                            <a href="#">Share</a>
+                          </div>
+                          
+                          <div class="input-field col s8 margin">
+                            <input id="profile-comments" type="text" class="validate">
+                            <label for="profile-comments" class="">Comments</label>
+                          </div>                        
+                        </div>                        
+                      </div>
+
+                      <!-- small -->
+                      <div id="profile-page-wall-post" class="card">
+                        <div class="card-profile-title">
+                          <div class="row">
+                            <div class="col s1">
+                              <img src="{{userimage}}" alt="" class="circle responsive-img valign profile-post-uer-image">                        
+                            </div>
+                            <div class="col s10">
+                              <p class="grey-text text-darken-4 margin">{{user.get_full_name}}</p>
+                              <span class="grey-text text-darken-1 ultra-small">Shared publicly  -  26 Jun 2015</span>
+                            </div>
+                            <div class="col s1 right-align">
+                              <i class="mdi-navigation-expand-more"></i>
+                            </div>
+                          </div>
+                          <div class="row">
+                            <div class="col s12">
+                              <p>Here is some content about the leader. </p>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="card-content">
+                          <p>I am a currently the prime-minister of india.Lets create a Digital and Smart India.</p>
+                        </div>
+                        <div class="card-action row">
+                          <div class="col s4 card-action-share">
+                            <a href="#">Like</a>                          
+                            <a href="#">Share</a>
+                          </div>
+                          
+                          <div class="input-field col s8 margin">
+                            <input id="profile-comments" type="text" class="validate">
+                            <label for="profile-comments" class="">Comments</label>
+                          </div>                        
+                        </div>                        
+                      </div>
+                  </div>                  
+                </div>
+                <!--/ profile-page-wall-posts -->
+
+              </div>
+              <!--/ profile-page-wall -->
+
+            </div>
+          </div>
+        </div>
+        </div>
+        <!--end container-->
+      </section>
+      <!-- END CONTENT -->
+
+      <!-- //////////////////////////////////////////////////////////////////////////// -->
+      <!-- START RIGHT SIDEBAR NAV-->
+      <aside id="right-sidebar-nav">
+        <ul id="chat-out" class="side-nav rightside-navigation">
+            <li class="li-hover">
+            <a href="#" data-activates="chat-out" class="chat-close-collapse right"><i class="mdi-navigation-close"></i></a>
+            <div id="right-search" class="row">
+                <form class="col s12">
+                    <div class="input-field">
+                        <i class="mdi-action-search prefix"></i>
+                        <input id="icon_prefix" type="text" class="validate">
+                        <label for="icon_prefix">Search</label>
+                    </div>
+                </form>
+            </div>
+            </li>
+            <li class="li-hover">
+                <ul class="chat-collapsible" data-collapsible="expandable">
+                <li>
+                    <div class="collapsible-header teal white-text active"><i class="mdi-social-whatshot"></i>Recent Activity</div>
+                    <div class="collapsible-body recent-activity">
+                        <div class="recent-activity-list chat-out-list row">
+                            <div class="col s3 recent-activity-list-icon"><i class="mdi-action-add-shopping-cart"></i>
+                            </div>
+                            <div class="col s9 recent-activity-list-text">
+                                <a href="#">just now</a>
+                                <p>PM Purchased new equipments for zonal office.</p>
+                            </div>
+                        </div>
+                        <div class="recent-activity-list chat-out-list row">
+                            <div class="col s3 recent-activity-list-icon"><i class="mdi-device-airplanemode-on"></i>
+                            </div>
+                            <div class="col s9 recent-activity-list-text">
+                                <a href="#">Yesterday</a>
+                                <p>PM's Next flight for USA will be on 18th Nov 2015.</p>
+                            </div>
+                        </div>
+                        <div class="recent-activity-list chat-out-list row">
+                            <div class="col s3 recent-activity-list-icon"><i class="mdi-action-settings-voice"></i>
+                            </div>
+                            <div class="col s9 recent-activity-list-text">
+                                <a href="#">5 Days Ago</a>
+                                <p>Mark Zuckerbug Send you a voice mail for next conference.</p>
+                            </div>
+                        </div>
+                        <div class="recent-activity-list chat-out-list row">
+                            <div class="col s3 recent-activity-list-icon"><i class="mdi-action-store"></i>
+                            </div>
+                            <div class="col s9 recent-activity-list-text">
+                                <a href="#">Last Week</a>
+                                <p>Arun Jaitley Scheduled a meeting.</p>
+                            </div>
+                        </div>
+                        <div class="recent-activity-list chat-out-list row">
+                            <div class="col s3 recent-activity-list-icon"><i class="mdi-action-settings-voice"></i>
+                            </div>
+                            <div class="col s9 recent-activity-list-text">
+                                <a href="#">5 Days Ago</a>
+                                <p>Home Minister Send you a voice mail for next conference.</p>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="collapsible-header light-blue white-text active"><i class="mdi-editor-attach-money"></i>Budget Report</div>
+                    <div class="collapsible-body sales-repoart">
+                        <div class="sales-repoart-list  chat-out-list row">
+                            <div class="col s8">Target Expenditure</div>
+                            <div class="col s4"><span id="sales-line-1"></span>
+                            </div>
+                        </div>
+                        <div class="sales-repoart-list chat-out-list row">
+                            <div class="col s8">Payment Done</div>
+                            <div class="col s4"><span id="sales-bar-1"></span>
+                            </div>
+                        </div>
+                        <div class="sales-repoart-list chat-out-list row">
+                            <div class="col s8">Payment Left</div>
+                            <div class="col s4"><span id="sales-line-2"></span>
+                            </div>
+                        </div>
+                        <div class="sales-repoart-list chat-out-list row">
+                            <div class="col s8">Total Progress</div>
+                            <div class="col s4"><span id="sales-bar-2"></span>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="collapsible-header red white-text"><i class="mdi-action-stars"></i>Favorite Bureaucrats</div>
+                    <div class="collapsible-body favorite-associates">
+                        <div class="favorite-associate-list chat-out-list row">
+                            <div class="col s4"><img src="{{userimage}}" alt="" class="circle responsive-img online-user valign profile-image">
+                            </div>
+                            <div class="col s8">
+                                <p>Eileen Sideways</p>
+                                <p class="place">Los Angeles, CA</p>
+                            </div>
+                        </div>
+                        <div class="favorite-associate-list chat-out-list row">
+                            <div class="col s4"><img src="{{userimage}}" alt="" class="circle responsive-img online-user valign profile-image">
+                            </div>
+                            <div class="col s8">
+                                <p>Zaham Sindil</p>
+                                <p class="place">San Francisco, CA</p>
+                            </div>
+                        </div>
+                        <div class="favorite-associate-list chat-out-list row">
+                            <div class="col s4"><img src="{{userimage}}" alt="" class="circle responsive-img offline-user valign profile-image">
+                            </div>
+                            <div class="col s8">
+                                <p>Renov Leongal</p>
+                                <p class="place">Cebu City, Philippines</p>
+                            </div>
+                        </div>
+                        <div class="favorite-associate-list chat-out-list row">
+                            <div class="col s4"><img src="{{userimage}}" alt="" class="circle responsive-img online-user valign profile-image">
+                            </div>
+                            <div class="col s8">
+                                <p>Weno Carasbong</p>
+                                <p>Tokyo, Japan</p>
+                            </div>
+                        </div>
+                        <div class="favorite-associate-list chat-out-list row">
+                            <div class="col s4"><img src="{{userimage}}" alt="" class="circle responsive-img offline-user valign profile-image">
+                            </div>
+                            <div class="col s8">
+                                <p>Nusja Nawancali</p>
+                                <p class="place">Bangkok, Thailand</p>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                </ul>
+            </li>
+        </ul>
+      </aside>
+      <!-- LEFT RIGHT SIDEBAR NAV-->
+
+    </div>
+    <!-- END WRAPPER -->
+
+  </div>
+  <!-- END MAIN -->
+
+
+
+  <!-- //////////////////////////////////////////////////////////////////////////// -->
+
+  <!-- START FOOTER -->
+  <footer class="page-footer">
+    <div class="footer-copyright">
+      <div class="container">
+        
+        <span class="right"> Design and Developed by <a class="grey-text text-lighten-4" href="http://smartcity.com/">Smart City India</a></span>
+        </div>
+    </div>
+  </footer>
+  <!-- END FOOTER -->
+
+
+
+    <!-- ================================================
+    Scripts
+    ================================================ -->
+    
+    <!-- jQuery Library -->
+    <script type="text/javascript" src="{% static 'js/jquery-1.11.2.min.js' %}"></script>    
+    <!--materialize js-->
+    <script type="text/javascript" src="{% static 'js/materialize.js' %}"></script>
+    <!--prism-->
+    <script type="text/javascript" src="{% static 'js/prism.js' %"></script>
+    <!--scrollbar-->
+    <script type="text/javascript" src="{% static 'js/plugins/perfect-scrollbar/perfect-scrollbar.min.js'}"></script>
+    <!-- chartist -->
+    <script type="text/javascript" src="{% static 'js/plugins/chartist-js/chartist.min.js'%}"></script>  
+
+    <!-- sparkline -->
+    <script type="text/javascript" src="{% static 'js/plugins/sparkline/jquery.sparkline.min.js'%}"></script>
+    <script type="text/javascript" src="{% static 'js/plugins/sparkline/sparkline-script.js'%}"></script>
+    
+    <!-- google map api -->
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAAZnaZBXLqNBRXjd-82km_NO7GUItyKek"></script>
+    
+    <!--plugins.js - Some Specific JS codes for Plugin Settings-->
+    <script type="text/javascript" src="{% static 'js/plugins.js'%}"></script>
+
+    <!-- Toast Notification -->
+    <script type="text/javascript">
+    // Toast Notification
+    
+
+    $(function() {
+      // Google Maps  
+      $('#map-canvas').addClass('loading');    
+      var latlng = new google.maps.LatLng(40.6700, -73.9400); // Set your Lat. Log. New York
+      var settings = {
+          zoom: 10,
+          center: latlng,
+          mapTypeId: google.maps.MapTypeId.ROADMAP,
+          mapTypeControl: false,
+          scrollwheel: false,
+          draggable: true,
+          styles: [{"featureType":"landscape.natural","elementType":"geometry.fill","stylers":[{"visibility":"on"},{"color":"#e0efef"}]},{"featureType":"poi","elementType":"geometry.fill","stylers":[{"visibility":"on"},{"hue":"#1900ff"},{"color":"#c0e8e8"}]},{"featureType":"road","elementType":"geometry","stylers":[{"lightness":100},{"visibility":"simplified"}]},{"featureType":"road","elementType":"labels","stylers":[{"visibility":"off"}]},{"featureType":"transit.line","elementType":"geometry","stylers":[{"visibility":"on"},{"lightness":700}]},{"featureType":"water","elementType":"all","stylers":[{"color":"#7dcdcd"}]}],
+          mapTypeControlOptions: {style: google.maps.MapTypeControlStyle.DROPDOWN_MENU},
+          navigationControl: false,
+          navigationControlOptions: {style: google.maps.NavigationControlStyle.SMALL},            
+      };
+      var map = new google.maps.Map(document.getElementById("map-canvas"), settings);
+
+      google.maps.event.addDomListener(window, "resize", function() {
+          var center = map.getCenter();
+          google.maps.event.trigger(map, "resize");
+          map.setCenter(center);
+          $('#map-canvas').removeClass('loading');
+      });
+
+      var contentString =
+          '<div id="info-window">'+
+          '<p>18 McLuice Road, Vellyon Hills,<br /> New York, NY 10010<br /><a href="https://plus.google.com/102896039836143247306/about?gl=za&hl=en" target="_blank">Get directions</a></p>'+
+          '</div>';
+      var infowindow = new google.maps.InfoWindow({
+          content: contentString
+      });
+
+      var companyImage = new google.maps.MarkerImage('http://demo.geekslabs.com/ashoka/images/map-marker.png',
+          new google.maps.Size(36,62),// Width and height of the marker
+          new google.maps.Point(0,0),
+          new google.maps.Point(18,52)// Position of the marker 
+      );
+
+      var companyPos = new google.maps.LatLng(40.6700, -73.9400);
+
+      var companyMarker = new google.maps.Marker({
+          position: companyPos,
+          map: map,
+          icon: companyImage,
+          title:"Shapeshift Interactive",
+          zIndex: 3});
+
+      google.maps.event.addListener(companyMarker, 'click', function() {
+          infowindow.open(map,companyMarker);
+          pageView('/#address');
+      });
+    });
+
+    </script>
+    
+</body>
+
+</html>

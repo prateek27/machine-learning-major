@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html>
+	<head>
+		<title>GamersHQ Login</title>
+		<style>
+		#form_div{
+	 			max-width: 300px;
+	 			margin-left: 35%;
+	 		}
+		</style>
+	</head>
+
+	<body>
+		<!--img src="{%static "images/logo.jpg"%}">-->
+		
+
+		 {% include 'material/includes/material_css.html' %}
+  		 {% include 'material/includes/material_js.html' %}
+		 {% load material_form %}
+		<div id="form_div">
+		<h3>New Users Register here !</h3>
+		<form id="signup_form" method="post" action = "/signup/" enctype="multipart/form-data">
+		{% csrf_token %}
+		{{ user_form.as_p}}
+		{{ user_profile_form.as_p}}
+		
+		<input type = "submit" name="submit" class="btn" value="SignUp"/>
+		</form>
+		</div>
+	</body>
+</html>
