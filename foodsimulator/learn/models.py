@@ -26,3 +26,12 @@ class order(models.Model):
 
 	def __str__(self):
 		return str(self.school.school_name + str(self.units_delivered) + "/" + str(self.units_left)) 
+
+class result(models.Model):
+	students = models.IntegerField(default=45)
+	lr = models.IntegerField(default=45)
+	rr = models.IntegerField(default=45)
+	svm = models.IntegerField(default=45)
+	
+	def __str__(self):
+		return str(self.school.school_name + str(self.units_delivered) + "/" + str(self.units_left)) 

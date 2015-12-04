@@ -35,9 +35,12 @@ var l =0;
 var trendingLineChart;
 function update() {
 	nReloads++;
-
-	var x = Math.floor(Math.random() * (max - min + 1)) + min;
-	var y = Math.floor(Math.random() * (max - min + 1)) + min;
+	max1 = 15
+	max2 = 5
+	min1 =10
+	min2 = 2
+	var x = Math.floor(Math.random() * (max1 - min1 + 1)) + min1;
+	var y = Math.floor(Math.random() * (max2 - min2 + 1)) + min2;
 	trendingLineChart.addData([x,y], data.labels[l]);
 	trendingLineChart.removeData();
 	l++;
@@ -73,7 +76,7 @@ Trending Bar Chart
 */
 
 var dataBarChart = {
-    labels : ["SEPT","OCT","NOV","DEC"],
+    labels : ["Average Error","Linear Reg ","Ridge Reg","SVM"],
     datasets: [
         {
             label: "Bar dataset",
@@ -81,7 +84,7 @@ var dataBarChart = {
             strokeColor: "#46BFBD",
             highlightFill: "rgba(70, 191, 189, 0.4)",
             highlightStroke: "rgba(70, 191, 189, 0.9)",
-            data: [69, 90, 85, 80, 65]
+            data: [12.02, 3.5, 3.25,2.4]
         }
     ]
 };

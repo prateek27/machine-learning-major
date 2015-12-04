@@ -11,5 +11,6 @@ urlpatterns = patterns('',
 
     url(r'^$',index,name="dummy_view"),
     url(r'^save_data/',save_data,name="save_view"),
+    url(r'^home/',home,name="home_view"),
 )
 

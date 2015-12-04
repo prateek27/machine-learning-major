@@ -1,33 +1,66 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.views.decorators.csrf import csrf_exempt 
-from learn.models import school,order
+from learn.models import school,order,result
 from random import randint
 from sklearn import linear_model
+from sklearn import svm
 
 # Create your views here.
 def index(request):
-    return HttpResponse("Hello, world. You're at food simulator.")
+	return HttpResponse("Hello, world. You're at food simulator.")
 
+def home(request):
+	lis = result.objects.all()
+	print(len(lis))
+	latest = lis[len(lis)-1]
+	context_dict = {"students":latest.students,"lr":latest.lr,"rr":latest.rr,"svm":latest.svm}
+	print(latest.lr)
+	print(latest.rr)
+	print(latest.svm)
+	print(latest.students)
+	return render(request,"index.html",context_dict)
 
 @csrf_exempt
 def save_data(request):
 	
 	if(request.method=="GET"):
+		lis = result.objects.all()
+		print(len(lis))
+		latest = lis[len(lis)-1]
+		
+		print("Result Start")
+		print(latest.lr)
+		print(latest.rr)
+		print(latest.svm)
+		print(latest.students)
+		print("Hello") 
+		
 		return render(request,"index.html")
 	else:	
-		print(request)
+		
+		#print(request)
 
 		#school_id = request.POST.get('school_id')
-		total = request.GET.get('students_total')
+		"""	total = request.GET.get('students_total')
+	
 		present = request.GET.get('students_present')
 		
 		utotal = request.GET.get('units_delivered')
 		uleft = request.GET.get('units_left')
 		
 		feedback = request.GET.get('feedback')
+		"""
+		total = request.POST.get('students_total')
+	
+		present = request.POST.get('students_present')
+		
+		utotal = request.POST.get('units_delivered')
+		uleft = request.POST.get('units_left')
+		
+		feedback = request.POST.get('feedback')
 
-
+		
 		
 		school_list = school.objects.all()
 		first = school_list[0]
@@ -45,7 +78,16 @@ def save_data(request):
 		test_data = update(test_data,int(present))
 		x = generateX(test_data)
 		y = generateY(test_data)
-		print("predicted value is "+str(findNext(x,y,test_data)))
+		
+		
+		linear = findNext(x,y,test_data)
+		ridge  = findNext(x,y,test_data)
+		support = findNext(x,y,test_data)
+
+
+		r = result(students = int(present),rr = int(ridge)+1,lr=int(linear)+1,svm = int(support))
+		r.save()
+		
 		CompareError(x,y,test_data)
 		return HttpResponse("Ok")
 
@@ -95,6 +137,25 @@ def findNext(X,Y,testdata):
 	predicted_Attendance = avg - clf.intercept_ - avg*clf.coef_[0] - prev*clf.coef_[1]
 	return int(predicted_Attendance)
 
+def findNextSVM(X,Y,testdata):
+	clf = svm.SVC()
+	clf.fit(X,Y)
+	length = len(testdata)
+	sum = length*testdata[length-1][0]
+	prev = testdata[length-1][1]
+	avg = sum/length
+	predicted_Attendance = avg - clf.predict([[avg,prev]])[0]
+	return int(predicted_Attendance)
+
+def findNextRidge(X,Y,testdata):
+	clf = linear_model.Ridge(alpha=0.5)
+	clf.fit(X,Y)
+	length = len(testdata)
+	sum = length*testdata[length-1][0]
+	prev = testdata[length-1][1]
+	avg = sum/length
+	predicted_Attendance = avg - clf.intercept_ - avg*clf.coef_[0] - prev*clf.coef_[1]
+	return int(predicted_Attendance)
 def update(testdata,attendance):
 	length = len(testdata)
 	sum = length*testdata[length-1][0]
